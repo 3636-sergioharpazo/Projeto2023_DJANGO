@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block title %} cadastrar Usuários {% endblock title %}
+{%block conteudo%}
+    <h1>Cadastro de Fornecedores</h1>
+    <ul>
+        {% for pessoa in pessoas%}
+        <li>
+            {{pessoa.id}}- 
+            {{pessoa.nome}} <a class="btn btn-success" href="{% url 'editar' pessoa.id %}">Editar </a>   -   <a class="btn btn-danger" href="{% url 'delete' pessoa.id %}">deletar </a>
+        </li>
+{%endfor%}
+    </ul>
+
+    <form action="{% url 'create' %}" method="post">
+{%csrf_token%}
+        <Label>Nome</Label><br><br>
+
+<input type="text" name="nome" id="nome">
+<button type="submit">salvar</button>
+    </form>
+    
+    {%endblock %}

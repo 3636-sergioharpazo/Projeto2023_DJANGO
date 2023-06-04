@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block title %} editar {% endblock title %}
+{%block conteudo%}
+
+
+<h1>Editar</h1>
+    <ul>
+       
+        <li>
+            {{pessoa.id}}- 
+            {{pessoa.nome}}
+        </li>
+    </ul>
+
+    <form action="{% url 'update' pessoa.id %}" method="post">
+{%csrf_token%}
+        <Label>Nome</Label><br>
+
+<input type="text" name="nome" id="nome" value="{{pessoa.nome}}">
+<button type="submit">Editar</button>
+    </form>
+    {%endblock%}
